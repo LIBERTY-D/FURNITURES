@@ -30,12 +30,12 @@ products_schema = new mongoose.Schema({
     type: String,
   },
 });
-products_schema.pre("save", function (next) {
-  console.log("saved");
-  next();
-});
-products_schema.pre(/^find/, function (next) {
-  next();
-});
+// products_schema.pre("save", function (next) {
+//   console.log("saved");
+//   next();
+// });
+// products_schema.pre(/^find/, function (next) {
+//   next();
+// });
 const Products = mongoose.model("Product", products_schema);
 module.exports = Products;

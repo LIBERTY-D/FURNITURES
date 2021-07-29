@@ -13,7 +13,7 @@ const DB = async (url) => {
     });
     console.log("DATABASE CONNECTED...");
   } catch (err) {
-    console.log("The WAS AN ERROR", err);
+    console.log("The WAS AN ERROR WITH CONNECTING DATABASE", err);
   }
 };
 module.exports = DB;

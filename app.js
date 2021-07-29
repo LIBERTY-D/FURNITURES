@@ -3,8 +3,10 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 const pug = require("pug");
+const compression = require("compression");
 const router = express.Router();
 const app = express();
+
 const DB = require("./server");
 const userController = require("./CONTROLLERS/userController");
 // ERROR HANDLERS
@@ -60,7 +62,8 @@ app.use(userRouter);
 app.use(reviewRouter);
 app.use(bookingRouter);
 app.use(viewsRouter);
-
+// COMPRESS TEXTS SEND TO CLIENTS
+app.use(compression());
 app.all("*", (req, res, next) => {
   return next(
     new API(
@@ -73,9 +76,7 @@ app.all("*", (req, res, next) => {
 // GLOBAL ERROR
 app.use(err.errorHandler);
 DB(process.env.DB_CONNECTION.replace("<PASSWORD>", process.env.password));
-process.on("unhandledRejection", (err) => {
-  console.log(err);
-});
+
 const PORT = process.env.PORT || 3000;
 app.listen(3000, () => {
   console.log(`Listening PORT:${PORT}...`);

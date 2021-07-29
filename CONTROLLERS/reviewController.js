@@ -13,8 +13,6 @@ const filter = (obj, ...fields) => {
   return newObject;
 };
 module.exports.createReview = fn.wrapper(async (req, res, next) => {
-  console.log(req.body);
-
   if (!req.body.rating || !req.body.review) {
     return next(new API("Can't submit Empty Review Or Rating", 400));
   }
