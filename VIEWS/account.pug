@@ -1,0 +1,34 @@
+meta(charset='UTF-8')
+meta(http-equiv='X-UA-Compatible', content='IE=edge')
+meta(name='viewport', content='width=device-width,initial-scale=1')
+script(src='https://use.fontawesome.com/8e39089ff1.js')
+title= title
+body.account-body
+include _nav
+section.account
+  main.navs
+    span(class="times") &times
+    h2 Account Settings
+    .account-links
+      ul
+        li
+          a(href='/furnitures/User/Account?=general' class="navs-links" id="getGeneral") General Settings
+        li
+          a(href='/furnitures/User/Account?=password'  class="navs-links" id="getPassword") Change Password
+        li
+          a(href='/furnitures/User/Reviews'  class="navs-links" id="getReviews") Your Reviews
+        li
+          a(href='/furnitures/User/Bookings'  class="navs-links" id="getBookings") Your Bookings
+        li
+         a(href='/furnitures') Home
+//- general account
+block accountContent
+  include _generalAccount
+  
+  //- change password form
+  include _changePassword
+ 
+  //  FOOTER 
+  include _footer
+  .overlay
+ script(src="/dist/bundle.js") 

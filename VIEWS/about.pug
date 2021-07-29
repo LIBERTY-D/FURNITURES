@@ -1,0 +1,38 @@
+doctype html
+html(lang="en")
+ head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' 
+    rel='stylesheet')
+    script(src='https://use.fontawesome.com/8e39089ff1.js')
+    title= title
+ body
+ section.buildings
+  .building-container 
+   .building
+    img(src="/IMG/lodz.jpg", class="building-img" alt="building")
+    p One Of Our Buildings in Lodz
+   .small-buildings
+    .small-building
+     img(src="/IMG/loads small2.jpeg", class="small-img" alt="building")
+    .small-building
+     img(src="/IMG/lodz small.jpeg", class="small-img" alt="building")
+   .about-us 
+    .main 
+     h2.about About Us
+     .underline
+    p.
+       Come discover the Home Décor Superstore with endless aisles of must-have styles at prices so low you won't believe it. And the best part? Our products are all backed by our Best Price Promise.
+
+       A warehouse-worth of space in our stores makes it easy to browse comfortably with more room to yourself and improved safety for our customers and team members. And with 1000’s of new arrivals every month, you will find aisle after aisle of endless possibilities!
+ .main 
+  h2 Our Locations 
+  .underline
+ .map-container 
+  div#map
+     
+include _footer
+script(src="/dist/bundle.js") 
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/CART/PUBLIC/index.css" />
+    <script src="https://use.fontawesome.com/8e39089ff1.js"></script>
+    <title>Account</title>
+  </head>
+  <body>
+    <nav class="bars">
+      <i class="fa fa-bars"></i>
+    </nav>
+    <section class="account">
+      <main class="navs">
+        <h2>Account Settings</h2>
+        <div class="account-links">
+          <ul>
+            <li><a href="#">General Settings</a></li>
+            <li><a href="#">Change Pasword</a></li>
+            <li><a href="#">Your Reviews</a></li>
+            <li><a href="#">Your Bookings</a></li>
+          </ul>
+        </div>
+      </main>
+      <main class="general-account">
+        <form class="account-form">
+          <div class="form-info">
+            <label for="username">Username</label>
+            <br />
+            <input type="text" id="email" value="liberty" />
+            <br />
+            <label for="email">Email</label>
+            <br />
+            <input type="email" id="email" value="liberty@gmail.com" />
+            <div class="btns">
+              <button class="btn delete-btn">Delete Account</button>
+              <button class="btn save-btn">Save Changes</button>
+            </div>
+          </div>
+          <div class="file">
+            <img
+              src="/SRS/EXPRESS/PUBLIC/img/default.png"
+              alt=""
+              class="uploaded-img"
+            />
+            <br />
+            <input
+              type="file"
+              accept="image/*"
+              name="image"
+              id="image"
+              hidden
+            />
+            <label for="image" class="btn upload-btn">Upload</label>
+          </div>
+        </form>
+      </main>
+    </section>
+    <!-- FOOTER -->
+    <footer>
+      <ul class="footer-links">
+        <li><a href="#">Download App</a></li>
+        <li><a href="#">Our Products</a></li>
+        <li><a href="#">Contact user</a></li>
+        <li><a href="#">About Us</a></li>
+      </ul>
+    </footer>
+  </body>
+</html>

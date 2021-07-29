@@ -1,0 +1,18 @@
+main.general-account.getGeneral
+    form.account-form
+      .form-info
+        label(for='username') Username
+        br
+        input#username(type='text', value=`${userAccount.username}`)
+        br
+        label(for='email') Email
+        br
+        input#email(type='email', value=`${userAccount.email}`)
+        .btns
+          button.btn.delete-btn(type="button") Delete Account
+          button.btn.save-btn(type="submit") Save Changes
+      .file
+        img.uploaded-account(src=`/IMG/${userAccount.image}`, alt=`${userAccount.username}`)
+        br
+        input#image(type='file', accept='image/*', name='image', hidden)
+        label.btn.upload-btn(for='image') Upload

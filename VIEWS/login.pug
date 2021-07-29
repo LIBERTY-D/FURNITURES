@@ -1,0 +1,41 @@
+meta(charset='UTF-8')
+meta(http-equiv='X-UA-Compatible', content='IE=edge')
+meta(name='viewport', content='width=device-width,initial-scale=1')
+title= Login
+main
+  //  NAV 
+  nav.nav-bar
+    div
+      a.head(href='/furnitures/All') Products
+    .login-signUp-container
+      .user-container
+        .user-img-container
+          a(href='/furnitures/user/account')
+            img.uploaded-img(src='/IMG/default.png', alt="null")
+        ul.login-signUp-links
+          li
+            a(href='/furnitures/login') Login
+          li
+            a(href='/furnitures/signUp') signUp
+//  END OF THE MAIN 
+//  LOGIN
+.error-modal 
+ p.err herror
+.login-container
+  form.login-form( autocomplete='off')
+    label(for='email') Email
+    br
+    input#email(type='text' , autocomplete='off', placeholder='example@gmail.com', name='email'  )
+    br
+    label(for='password') Password
+    br
+    input#password(type='password', autocomplete='off', name='password', placeholder='******')
+    br
+    .submit-container
+      button.btn.submit-btn(type='submit') Login
+    .forgot-passowrd
+      p
+        a(href='/furnitures/User/Forgot') Forgot Password
+//  FOOTER 
+include _footer
+script(src="/dist/bundle.js") 

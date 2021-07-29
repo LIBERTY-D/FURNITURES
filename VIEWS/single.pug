@@ -1,0 +1,39 @@
+meta(charset='UTF-8')
+meta(http-equiv='X-UA-Compatible', content='IE=edge')
+meta(name='viewport', content='width=device-width,initial-scale=1')
+link(rel='stylesheet',href='/index.css')
+script(src='https://use.fontawesome.com/8e39089ff1.js')
+title= title
+//- include _header
+//  NAV 
+nav.nav-bar
+  div
+   a.head(href='/furnitures') FURNITURES
+  .login-signUp-container
+   .user-container
+    .user-img-container
+    if user
+      a(href='/furnitures/user/account')
+        img.uploaded-img(src=`/IMG/${user.image}`, alt=`${user.username}`)
+        span.username= `${user?user.username.split(" ")[0]:""}`
+    if !user
+      ul.login-signUp-links
+      li
+        a(href='/furnitures/login') Login
+      li
+        a(href='/furnitures/sign') signUp
+//  PRODUCTS 
+.product
+  //  PRODUCT 
+  .single-product-container
+    .single-container
+      .product-container-img
+        img.product-img(src=`${product.image}` alt=`${product.name}`)
+      i.fa.fa-search(data-single='single')
+      .single-info
+        p.name= product.name
+        p.price= `$${product.price/100}`
+  .desc-container
+    p(class="desc")= product.description
+    br
+    a(href='/furnitures/All') All PRODUCTS

@@ -1,0 +1,56 @@
+meta(charset='UTF-8')
+meta(http-equiv='X-UA-Compatible', content='IE=edge')
+meta(name='viewport', content='width=device-width,initial-scale=1')
+title Sign Up
+body.signUpBody
+main
+  //  NAV 
+  nav.nav-bar
+    div
+      a.head(href='/furnitures/All') Furnitures
+    .login-signUp-container
+      .user-container
+        .user-img-container
+          a(href='/furnitures/User/Account')
+            img.uploaded-img(src='/IMG/default.png')
+        ul.login-signUp-links
+          li
+            a(href='/furnitures/login') Login
+          li
+            a(href='/furnitures/signUp') signUp
+
+.error-modal 
+ p.err 
+.signUp-container
+  form.signUp-form
+    label(for='username') Username
+    br
+    input#username(type='text', placeholder='fullName', name='username')
+    br
+    label(for='email') Email
+    br
+    input#email(type='text', placeholder='example@gmail.com', name='email')
+    br
+    label(for='password') Password
+    br
+    input#password(type='password', name='password', placeholder='******')
+    br
+    label(for='confirmPassword') Confirm Password
+    br
+    input#confirmPassword(type='password', name='confirmPassword' placeholder='******')
+    br
+    .terms-container
+      .terms
+        p By Signing Up. You agree to the
+
+          a.terms-link(href='#')  terms of service
+          |  and
+
+          a.terms-link(href='#')  privacy statement
+          | . We'll sent you account related emails.
+
+    .submit-container
+      button.btn.submit-btn(type='submit') Submit
+//  FOOTER 
+include _footer
+script(src="/dist/bundle.js") 

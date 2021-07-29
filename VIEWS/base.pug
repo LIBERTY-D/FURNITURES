@@ -1,0 +1,42 @@
+meta(charset='UTF-8')
+meta(http-equiv='X-UA-Compatible', content='IE=edge')
+meta(name='viewport', content='width=device-width,initial-scale=1')
+title= title 
+body
+  //- include _header
+  //  NAV 
+  nav.nav-bar
+    div
+      a.head(href='/furnitures/All') Furnitures
+    .login-signUp-container
+      .user-container
+       if user
+        .user-img-container
+          a(href='/furnitures/User/Account')
+            img.uploaded-img(src=`/IMG/${user.image}`, alt=`${user.username}`)
+            p=user.username
+        ul.login-signUp-links
+          li
+            a(href='#' class="logout") logout 
+       else
+        .user-img-container
+          a(href='/furnitures/User/Account')
+            img.uploaded-img(src='/IMG/default.png', alt="null")
+        ul.login-signUp-links
+          li
+            a(href='/furnitures/login') Login
+          li
+            a(href='/furnitures/signUp') signUp
+//  END OF THE MAIN 
+//  WELCOME 
+//  where user will be welcomed 
+.welcome
+  h1 Welcome To furnitures
+  p= `Thanks for Joining Us ${user? user.username :""}`
+//  FOOTER 
+.background 
+include _footer
+script(src="/dist/bundle.js") 
+
+
+

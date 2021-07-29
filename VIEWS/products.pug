@@ -1,0 +1,50 @@
+meta(charset='UTF-8')
+meta(http-equiv='X-UA-Compatible', content='IE=edge')
+meta(name='viewport', content='width=device-width,initial-scale=1')
+script(src='https://use.fontawesome.com/8e39089ff1.js')
+script(src="https://js.stripe.com/v3/")
+title= title
+//  HEADER 
+//- include _header
+//  NAV 
+nav.nav-bar
+  div
+    a.head(href='/furnitures') FURNITURES
+  .login-signUp-container
+   if !user
+    .user-container
+      .user-img-container
+        a(href='/furnitures/user/account')
+          img.uploaded-img(src='/IMG/default.png', alt="")
+      ul.login-signUp-links
+        li
+          a(href='/furnitures/login') Login
+        li
+          a(href='/furnitures/signUp') signUp
+   else
+    .nav-cart
+      i.fa.fa-cart-plus
+      span.cart-items 0
+
+//  PRODUCTS 
+
+.products
+  //  PRODUCT
+  each product in products
+    .products-container
+      .product-container
+        .product-container-img
+          img.product-img(src=`${product.image}`, alt=`${product.name}`)
+        .product-info
+          p.name= product.name
+          p.price= `${product.price/100}`
+        a(href=`./Single/${product._id}`)
+         i.fa.fa-search(data-single=`${product._id}`)
+        if user
+         button.add-to-cart(type='button', title='add to cart')
+          i.fa.fa-shopping-bag
+          
+include _cart
+include _footer
+script(src="/dist/bundle.js") 
+

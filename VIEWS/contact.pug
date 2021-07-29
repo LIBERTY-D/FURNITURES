@@ -1,0 +1,49 @@
+doctype html
+html(lang="en")
+ head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    script(src='https://use.fontawesome.com/8e39089ff1.js')
+    script(src="https://js.stripe.com/v3/")
+    title= title
+ body.contact-body
+ .main 
+  h2 Contact Us
+  .underline 
+ .contact-form-container 
+  .contact-form-message
+   p Hello error
+  form.contact-us-form 
+   label(for="contact-name") FullName 
+   br
+   input(type="text" id="contact-name" name="contact-name" placeholder="name...")
+   br
+   label(for="contact-email") Email Address 
+   br
+   input(type="email" id="contact-email" name="contact-email" placeholder="example@gmail.com")
+   br
+   label(for="contact-category") Request Category	
+   br
+   select(id="contact-category" name="contact-category")
+    option(hidden disabled selected value) -- select an option -- 
+    option(value="Store Discounts") Store Discounts
+    option(value="Store Condition") Store Condition
+    option(value="Item availability") Item availability
+    option(value="Refunds") Refunds
+    option(value="Other") Other
+   br
+   label(for="countries") Your Country
+   br
+   select(name="countries" id="countries")
+   br
+   label(for="contact-text") Message
+   br
+   textarea(id="contact-text" name="contact-text" col="5" row="10")
+   div
+    button(type="submit" class="submit-contact") submit
+ 
+ include _footer
+script(src="/dist/bundle.js") 
+//-  script(src="/JS/countries.js")
+

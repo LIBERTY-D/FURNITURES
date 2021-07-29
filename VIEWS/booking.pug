@@ -1,0 +1,39 @@
+extends account 
+block accountContent
+    //- BOOKINGS
+    .booking-container.getBookings
+     .main 
+       h2 Your Booking
+       .underline 
+    .booking
+    //-  .booking-img-container
+    //-   img(src="https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160" class="booking-img" alt="alt")
+    //-   .overlay-booking
+    //-    .overlay-items
+    //-     p.name quatntity:name
+    //-     p.total_price TotalPrice:12343
+    //-     p.quantity Quantity:2
+    .review-form-container
+     span.close-review &times
+     .review-user-img-container
+      img(src=`/IMG/${user.image}`,class="review-user-img" alt=`${user.username}`)
+     form.review-form
+      input(type="text" name="error" placeholder="User error" class="user-error")
+      label(for="review")
+      textarea.user-review(cols="10",rows="10" name="review" placeholder="Write Your review")
+      .review-btns-container
+       button(type="submit" class="submit-review") submit
+      .stars
+       i.fa.fa-star.star
+       i.fa.fa-star.star
+       i.fa.fa-star.star
+       i.fa.fa-star.star
+       i.fa.fa-star.star
+
+
+    //  FOOTER 
+    include _footer
+    .overlay
+    .overlay-review
+    script(src="/dist/bundle.js") 
+  

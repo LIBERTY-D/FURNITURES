@@ -1,0 +1,38 @@
+meta(charset='UTF-8')
+meta(http-equiv='X-UA-Compatible', content='IE=edge')
+meta(name='viewport', content='width=device-width,initial-scale=1')
+title= title
+main
+  //  NAV 
+  nav.nav-bar
+    div
+      a.head(href='/furnitures') Furnitures
+    .login-signUp-container
+      .user-container
+        .user-img-container
+          a(href='#')
+            img.uploaded-img(src='/IMG/default.png', alt='')
+        ul.login-signUp-links
+          li
+            a(href='/furnitures/login') Login
+          li
+            a(href='/furnitures/signUp') signUp
+//  END OF THE MAIN 
+//  SIGNUP 
+.reset-message 
+.reset-container
+  form.reset-form
+    label(for='password') Password
+    br
+    input#password(type='password', name='password', placeholder='******')
+    br
+    label(for='confirmPassword') Confirm Password
+    br
+    input#confirmPassword(type='password', name='confirmPassword' placeholder='******')
+    br
+    .submit-container
+      button.btn.reset-btn(type='submit') Submit
+//  FOOTER 
+include _footer
+script(src="/dist/bundle.js") 
+
