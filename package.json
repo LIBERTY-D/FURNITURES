@@ -7,7 +7,7 @@
     "start:dev": "SET NODE_ENV=development&&nodemon app.js",
     "start:prod": "SET NODE_ENV=development&&nodemon app.js",
     "start:web": "webpack --watch",
-    "start:build": "SET NODE_ENV=production webpack"
+    "start:build": "SET NODE_ENV=production&&webpack"
   },
   "author": "LIBERTY D",
   "license": "ISC",
