@@ -164,8 +164,12 @@ const upload = multer({
 module.exports.uploadPhoto = upload.single("image");
 module.exports.updateMe = fn.wrapper(async (req, res, next) => {
   let body = { ...req.body };
-  if (req.file) {
+  if (req.file === undefined) {
+    body = { ...body };
+    delete body["image"];
+  } else {
     body.image = req.file.filename;
+    body = { ...body, image: body.image };
   }
   await User.findByIdAndUpdate(req.user._id, body, {
     new: true,

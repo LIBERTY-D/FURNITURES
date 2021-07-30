@@ -161,10 +161,8 @@ const updateMe = async (data) => {
       data,
     });
     setTimeout(() => {
-      if (res.data.body) {
-        if (res.data.body.image) {
-          img.src = `/IMG/${res.data.body.image}`;
-        }
+      if (res.data.body.image) {
+        img.src = `/IMG/${res.data.body.image}`;
       }
     }, 1500);
   } catch (err) {
