@@ -106,7 +106,8 @@ a .username {
   position: fixed;
   top: 8rem;
   right: 0rem;
-  width: 500px;
+  max-width: 700px;
+  width: 100%;
   height: 400px;
   background: rgb(248, 242, 242);
   z-index: 999;
@@ -315,7 +316,9 @@ footer {
   max-width: 700px;
   margin: auto;
 }
-
+.changes h2 {
+  text-align: center;
+}
 .change-password-container {
   display: flex;
   align-items: center;
@@ -670,10 +673,11 @@ body.overlay-review {
   text-align: center;
   margin-top: 5rem;
   font-size: 1.3rem;
-  color: white;
+  color: rgb(165, 86, 86);
   font-weight: lighter;
 }
 .account-form {
+  margin-top: 5%;
   display: flex;
   align-items: center;
   gap: 1.3rem;
@@ -711,7 +715,7 @@ body.overlay-review {
 }
 /* PRODUCTS */
 .product-container-img {
-  width: 400px;
+  width: 300px;
   border: 1px solid#ddd;
   height: 250px;
   border-radius: 0.5rem;
@@ -871,7 +875,7 @@ body.overlay-review {
 }
 /* MAP */
 .map-container {
-  max-width: 1170px;
+  max-width: 700px;
   margin: auto;
   height: 500px;
   /* padding: 50px; */
