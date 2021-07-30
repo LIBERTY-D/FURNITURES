@@ -28,7 +28,7 @@ app.use(cookieParser());
 // STATIC FILES
 app.use(express.static(`${path.join(__dirname, "PUBLIC")}`));
 
-app.use("furnitures", router);
+app.use("/furnitures", router);
 router.route("/login").get(viewController.login);
 router.route("/signUp").get(viewController.signUp);
 router
