@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "start:dev": "SET NODE_ENV=development&&nodemon app.js",
     "start:prod": "SET NODE_ENV=development&&nodemon app.js",
     "start:web": "webpack --watch",
@@ -37,5 +38,8 @@
     "webpack": "^5.47.1",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
