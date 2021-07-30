@@ -17,7 +17,7 @@ nav.nav-bar
         img.uploaded-img(src=`/IMG/${user.image}`, alt=`${user.username}`)
         span.username= `${user?user.username.split(" ")[0]:""}`
     if !user
-      ul.login-signUp-links
+     ul.login-signUp-links
       li
         a(href='/furnitures/login') Login
       li

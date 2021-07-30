@@ -56,6 +56,9 @@ ul li {
   display: flex;
   gap: 0.3rem;
 }
+.user-img-container p {
+  color: #ccc;
+}
 .user-error {
   margin-top: 3rem;
   padding: 0.5rem 0.8rem;
@@ -72,9 +75,9 @@ ul li {
   border: 1px solid red;
 }
 
-a.username {
+a .username {
   font-size: 1.3rem;
-  color: rgb(12, 11, 11);
+  color: rgb(175, 167, 167);
 }
 .login-signUp-links {
   display: flex;
@@ -205,8 +208,9 @@ a.username {
 /* WELCOME */
 .welcome {
   text-align: center;
+  max-width: 200px;
   margin-top: 5rem;
-  height: 5rem;
+  max-height: 10rem;
   border: 1px solid #ccc;
   position: absolute;
   z-index: 3;
@@ -389,11 +393,12 @@ footer {
 .reviewMainContainer {
   max-width: 700px;
   margin: 10% auto;
-  border: 1px solid #ddd;
-  /* align-items: center; */
   flex-direction: column-reverse;
   display: flex;
   flex-wrap: wrap;
+}
+.reviewMainContainer .user-review {
+  border: none;
 }
 .star.review-color {
   color: orange;
@@ -447,6 +452,11 @@ footer {
   height: 100%;
   width: 100%;
   display: none;
+}
+.no-review {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 body.overlay-review {
   display: block;
@@ -794,6 +804,8 @@ body.overlay-review {
 /* SINGLE */
 .single-container {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .single-product-container {
   position: relative;
@@ -807,6 +819,7 @@ body.overlay-review {
 .desc-container {
   max-width: 700px;
   margin: auto;
+  margin-bottom: 5rem;
   color: rgb(63, 68, 68);
 }
 .desc {

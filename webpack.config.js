@@ -8,15 +8,21 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
+        test: /\.(png|jpg|gif)$/i,
+        use: "url-loader",
+      },
+
+      {
         test: /\.(js)$/,
         use: "babel-loader",
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: "asset/resource",
+        test: /\.pug$/,
+        use: ["apply", "pug"],
       },
     ],
   },
+
   output: {
     path: path.resolve(__dirname, "./PUBLIC/dist"),
     filename: "bundle.js",

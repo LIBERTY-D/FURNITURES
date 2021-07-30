@@ -1,8 +1,6 @@
-import "/PUBLIC/index.css";
 import axios from "axios";
 import { countries } from "./countries";
 import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
-
 const displayBlock = () => {
   if (
     document.querySelector(".total-container") ||
@@ -342,11 +340,7 @@ const getReview = async () => {
       const div = document.createElement("div");
       div.classList.add("no-review");
       div.innerHTML = "Your Have No Reviews";
-      div.style.fontSize = "18px";
-      div.style.letterSpacing = "0.3rem";
-      div.style.backgroundColor = "green";
-      div.style.color = "white";
-      return reviewsContainer.appendChild(div);
+      return (reviewsContainer.innerHTML = div.textContent);
     } else {
       mapUserUI(mapped);
     }
@@ -692,7 +686,7 @@ const forgot = async (email) => {
   try {
     const res = await axios({
       method: "POST",
-      url: "http://127.0.0.1:3000/furnitures/User/Forgot",
+      url: `${window.location.protocol}//${window.location.hostname}:${window.location.port}/furnitures/User/Forgot`,
       data: {
         email,
       },

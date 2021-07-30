@@ -1,6 +1,7 @@
 meta(charset='UTF-8')
 meta(http-equiv='X-UA-Compatible', content='IE=edge')
 meta(name='viewport', content='width=device-width,initial-scale=1')
+link(rel='stylesheet',href='/index.css')
 title= title 
 body
   //- include _header
@@ -21,7 +22,7 @@ body
        else
         .user-img-container
           a(href='/furnitures/User/Account')
-            img.uploaded-img(src='/IMG/default.png', alt="null")
+            img.uploaded-img(src=`/IMG/default.png`, alt="null")
         ul.login-signUp-links
           li
             a(href='/furnitures/login') Login
@@ -32,7 +33,7 @@ body
 //  where user will be welcomed 
 .welcome
   h1 Welcome To furnitures
-  p= `Thanks for Joining Us ${user? user.username :""}`
+  p= `Thanks for Joining Us ${user? user.username.split(" ")[0]:""}`
 //  FOOTER 
 .background 
 include _footer
