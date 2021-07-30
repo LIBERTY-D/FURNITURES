@@ -29,6 +29,9 @@ app.use(cookieParser());
 app.use(express.static(`${path.join(__dirname, "PUBLIC")}`));
 
 app.use("/furnitures", router);
+router.route("/").get(userController.isLoggedIn, viewController.home);
+router.route("/All").get(userController.isLoggedIn, viewController.All);
+// VIEW CONTROLLERS
 router.route("/login").get(viewController.login);
 router.route("/signUp").get(viewController.signUp);
 router
@@ -49,10 +52,6 @@ router
     userController.uploadPhoto,
     userController.updateMe
   );
-router.route("/").get(userController.isLoggedIn, viewController.home);
-router.route("/All").get(userController.isLoggedIn, viewController.All);
-// VIEW CONTROLLERS
-// NEED PARAMS TO GET SINGLE
 
 router
   .route("/Single/:single")
@@ -64,10 +63,6 @@ app.use(bookingRouter);
 app.use(viewsRouter);
 // COMPRESS TEXTS SEND TO CLIENTS
 app.use(compression());
-
-// GLOBAL ERROR
-app.use(err.errorHandler);
-DB(process.env.DB_CONNECTION.replace("<PASSWORD>", process.env.password));
 app.all("*", (req, res, next) => {
   return next(
     new API(
@@ -76,6 +71,11 @@ app.all("*", (req, res, next) => {
     )
   );
 });
+
+// GLOBAL ERROR
+app.use(err.errorHandler);
+DB(process.env.DB_CONNECTION.replace("<PASSWORD>", process.env.password));
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Listening PORT:${PORT}...`);
