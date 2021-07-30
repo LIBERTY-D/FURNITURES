@@ -64,6 +64,10 @@ app.use(bookingRouter);
 app.use(viewsRouter);
 // COMPRESS TEXTS SEND TO CLIENTS
 app.use(compression());
+
+// GLOBAL ERROR
+app.use(err.errorHandler);
+DB(process.env.DB_CONNECTION.replace("<PASSWORD>", process.env.password));
 app.all("*", (req, res, next) => {
   return next(
     new API(
@@ -72,11 +76,6 @@ app.all("*", (req, res, next) => {
     )
   );
 });
-
-// GLOBAL ERROR
-app.use(err.errorHandler);
-DB(process.env.DB_CONNECTION.replace("<PASSWORD>", process.env.password));
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Listening PORT:${PORT}...`);
