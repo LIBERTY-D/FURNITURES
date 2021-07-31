@@ -391,7 +391,8 @@ footer {
 }
 .reviews {
   max-width: 700px;
-  margin: auto;
+
+  margin: 10% auto;
 }
 .reviewMainContainer {
   max-width: 700px;
@@ -399,6 +400,8 @@ footer {
   flex-direction: column-reverse;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 .reviewMainContainer .user-review {
   border: none;
@@ -1071,6 +1074,7 @@ option {
     top: 0;
     display: flex;
     align-items: center;
+    z-index: 999;
     justify-content: space-around;
     cursor: pointer;
     font-size: 1.3rem;

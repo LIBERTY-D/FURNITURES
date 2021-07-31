@@ -201,6 +201,7 @@ const changePassword = async (oldPassword, password, confirmPassword) => {
   }
 };
 const passwordForm = document.querySelector(".password-form");
+
 const clearChangePasswordFields = () => {
   document.getElementById("oldPassword").value = "";
   document.getElementById("newPassword").value = "";
@@ -681,6 +682,7 @@ function resetMsg(resetMessage, msg) {
   setTimeout(() => {
     resetMessage.innerHTML = "";
   }, 3000);
+  return msg;
 }
 const forgot = async (email) => {
   try {
