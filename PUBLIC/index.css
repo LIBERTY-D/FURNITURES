@@ -791,6 +791,7 @@ body.overlay-review {
   /* chnages */
   gap: 5rem;
   flex-wrap: wrap;
+  padding-bottom: 10rem;
 }
 .nav-cart {
   position: relative;

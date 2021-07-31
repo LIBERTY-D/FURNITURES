@@ -51,8 +51,8 @@ module.exports.createBooking = fn.wrapper(async (req, res, next) => {
         quantity: 1,
       },
     ],
-    success_url: `${req.protocol}://${req.get("host")}/furnitures/All`,
-    cancel_url: `${req.protocol}://${req.get("host")}/furnitures/All`,
+    success_url: `https://${req.get("host")}/furnitures/All`,
+    cancel_url: `https://${req.get("host")}/furnitures/All`,
   });
   res.status(200).json({
     status: "success",
