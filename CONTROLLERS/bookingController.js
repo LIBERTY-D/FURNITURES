@@ -93,9 +93,9 @@ module.exports.webhook = async (req, res, next) => {
       user: event.data.object.client_reference_id,
       userProducts: JSON.parse(event.data.object.metadata.userProducts),
     });
-
-    return res.status(200).json({
-      received: true,
-    });
   }
+
+  return res.status(200).json({
+    received: true,
+  });
 };
