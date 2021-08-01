@@ -35,12 +35,11 @@ const userProducts = (req) => {
 module.exports.createBooking = fn.wrapper(async (req, res, next) => {
   const { total, count } = itemsCount(req.body);
   // Booking.create({ user: req.user._id, userProducts: userProducts(req) });
-
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     mode: "payment",
     customer_email: req.user.email,
-    client_reference_id: JSON.stringify(req.user._id),
+    client_reference_id: req.user._id.toString(),
     metadata: {
       userProducts: JSON.stringify(userProducts(req)),
     },
@@ -59,6 +58,7 @@ module.exports.createBooking = fn.wrapper(async (req, res, next) => {
     success_url: `${req.protocol}://${req.get("host")}/furnitures/All`,
     cancel_url: `${req.protocol}://${req.get("host")}/furnitures/All`,
   });
+
   res.status(200).json({
     status: "success",
     message: "booking successfully created",
