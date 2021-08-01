@@ -906,8 +906,8 @@ body.overlay-review {
   margin-top: 5%;
 }
 .building {
-  max-width: 500px;
-  max-height: 300px;
+  max-width: 700px;
+  height: 350px;
 }
 .small-buildings {
   display: flex;

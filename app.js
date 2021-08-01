@@ -26,7 +26,7 @@ const viewsRouter = require("./ROUTERS/viewsRouter");
 
 // WEBHOOK STRIPE
 app.post(
-  "/webhook-checkout",
+  "/furnitures/webhook-checkout",
   express.raw({ type: "application/json" }),
   bookingController.webhook
 );
