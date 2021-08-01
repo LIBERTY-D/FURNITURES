@@ -80,7 +80,7 @@ module.exports.webhook = async (req, res, next) => {
   let event;
   try {
     event = stripe.webhooks.constructEvent(
-      request.body,
+      req.body,
       signature,
       process.env.endpointSecret
     );
