@@ -76,7 +76,7 @@ module.exports.getBooking = fn.wrapper(async (req, res, next) => {
   });
 });
 module.exports.webhook = async (req, res, next) => {
-  const signature = request.headers["stripe-signature"];
+  const signature = req.headers["stripe-signature"];
   let event;
   try {
     event = stripe.webhooks.constructEvent(
