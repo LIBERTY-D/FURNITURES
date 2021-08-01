@@ -89,7 +89,7 @@ module.exports.webhook = async (req, res, next) => {
   }
   // Handle the event
   if (event.type === "checkout.session.completed") {
-    Booking.create({
+    await Booking.create({
       user: event.data.client_reference_id,
       userProducts: JSON.parse(event.data.metadata.userProducts),
     });
