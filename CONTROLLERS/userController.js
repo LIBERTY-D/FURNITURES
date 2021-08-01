@@ -20,11 +20,15 @@ const getToken = async (id) => {
     }
   });
 };
-sendCookie = (token, res) => {
-  const cookie = res.cookie("cookie", token, {
+sendCookie = (token, req, res) => {
+  const cookieOptions = {
     httpOnly: true,
     expires: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000),
-  });
+  };
+  if (req.secure || req.headers["x-forwarded-proto"] === "https") {
+    cookieOptions.secure = true;
+  }
+  const cookie = res.cookie("cookie", token, cookieOptions);
   return cookie;
 };
 module.exports.signUp = fn.wrapper(async (req, res, next) => {
@@ -34,7 +38,7 @@ module.exports.signUp = fn.wrapper(async (req, res, next) => {
   }
   const user = await User.create(req.body);
   const token = await getToken(user._id);
-  sendCookie(token, res);
+  sendCookie(token, req, res);
   const url = `${req.protocol}://${req.get("host")}/furnitures/login`;
   await new EMAIL(req.body, url).sendWelcome();
   return res.status(201).json({
@@ -55,7 +59,7 @@ module.exports.login = fn.wrapper(async (req, res, next) => {
     return next(new API("Incorrect Email or Password", 400));
   }
   const token = await getToken(user._id);
-  sendCookie(token, res);
+  sendCookie(token, req, res);
   return res.status(200).json({
     status: "success",
     message: "Your are SuccesFully Logged In.",
@@ -92,12 +96,7 @@ module.exports.isLoggedIn = async (req, res, next) => {
     }
     const token = req.cookies.cookie;
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    // CHECK IF COOKIE HASNT EXPIRED
 
-    // if (Date.now() > new Date(decoded.exp).getTime()) {
-    //   return next();
-    // }
-    //CHECK IF USER EXIST
     user = await User.findById(decoded.id);
     if (!user) {
       return next();

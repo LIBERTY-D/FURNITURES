@@ -1,4 +1,4 @@
-var stripe = require("stripe")(process.env.STRIPE_SECRET);
+const stripe = require("stripe")(process.env.STRIPE_SECRET);
 const Booking = require("../MODELS/bookingModel");
 const fn = require("../GLOBAL_ERROR/catchAsync");
 function itemsCount(products) {
@@ -34,11 +34,16 @@ const userProducts = (req) => {
 };
 module.exports.createBooking = fn.wrapper(async (req, res, next) => {
   const { total, count } = itemsCount(req.body);
-  Booking.create({ user: req.user._id, userProducts: userProducts(req) });
+  // Booking.create({ user: req.user._id, userProducts: userProducts(req) });
+
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     mode: "payment",
     customer_email: req.user.email,
+    client_reference_id: JSON.stringify(req.user._id),
+    metadata: {
+      userProducts: JSON.stringify(userProducts(req)),
+    },
     line_items: [
       {
         price_data: {
@@ -51,8 +56,8 @@ module.exports.createBooking = fn.wrapper(async (req, res, next) => {
         quantity: 1,
       },
     ],
-    success_url: `https://${req.get("host")}/furnitures/All`,
-    cancel_url: `https://${req.get("host")}/furnitures/All`,
+    success_url: `${req.protocol}://${req.get("host")}/furnitures/All`,
+    cancel_url: `${req.protocol}://${req.get("host")}/furnitures/All`,
   });
   res.status(200).json({
     status: "success",
@@ -70,3 +75,27 @@ module.exports.getBooking = fn.wrapper(async (req, res, next) => {
     userProducts,
   });
 });
+module.exports.webhook = async (req, res, next) => {
+  const signature = request.headers["stripe-signature"];
+  let event;
+  try {
+    event = stripe.webhooks.constructEvent(
+      request.body,
+      signature,
+      process.env.endpointSecret
+    );
+  } catch (err) {
+    res.status(400).send(`Webhook Error: ${err.message}`);
+  }
+  // Handle the event
+  if (event.type === "checkout.session.completed") {
+    Booking.create({
+      user: event.data.client_reference_id,
+      userProducts: JSON.parse(event.data.metadata.userProducts),
+    });
+
+    res.status(200).json({
+      received: true,
+    });
+  }
+};

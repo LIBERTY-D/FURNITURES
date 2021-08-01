@@ -270,11 +270,7 @@ const booking = async () => {
       const div = document.createElement("div");
       div.classList.add("no-booking");
       div.innerHTML = "Your Have No Bookings";
-      div.style.fontSize = "18px";
-      div.style.letterSpacing = "0.3rem";
-      div.style.backgroundColor = "green";
-      div.style.color = "white";
-      return bookingContainer.appendChild(div);
+      return (bookingContainer.innerHTML = div.textContent);
     } else {
       mapBookings(flatten);
     }
