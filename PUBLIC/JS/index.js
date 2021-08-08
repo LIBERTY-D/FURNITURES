@@ -760,6 +760,11 @@ if (document.URL.endsWith("/furnitures/All")) {
       stripe.redirectToCheckout({
         sessionId: res.data.session.id,
       });
+      if (res.data.session.id) {
+        setTimeout(() => {
+          displayNone();
+        }, 5000);
+      }
     } catch (err) {
       return err;
     }
@@ -771,9 +776,6 @@ if (document.URL.endsWith("/furnitures/All")) {
       await createBooking(getStorage("userProducts"));
       e.target.innerHTML = "Processing....";
       localStorage.removeItem("userProducts");
-      setTimeout(() => {
-        displayNone();
-      }, 5000);
     });
   }
 }

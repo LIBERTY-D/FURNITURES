@@ -35,6 +35,7 @@ const userProducts = (req) => {
 module.exports.createBooking = fn.wrapper(async (req, res, next) => {
   const { total, count } = itemsCount(req.body);
   // Booking.create({ user: req.user._id, userProducts: userProducts(req) });
+  // console.log(req.body);
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     mode: "payment",
@@ -43,21 +44,23 @@ module.exports.createBooking = fn.wrapper(async (req, res, next) => {
     metadata: {
       userProducts: JSON.stringify(userProducts(req)),
     },
-    line_items: [
-      {
+    line_items: req.body.map((product) => {
+      return {
         price_data: {
           currency: "usd",
           product_data: {
-            name: "Total Shopping Bag Amount",
+            name: product.name,
           },
-          unit_amount: Math.ceil(total) * 100,
+          unit_amount: product.price * 100,
         },
-        quantity: 1,
-      },
-    ],
+        quantity: product.count,
+      };
+    }),
+
     success_url: `${req.protocol}://${req.get("host")}/furnitures/All`,
     cancel_url: `${req.protocol}://${req.get("host")}/furnitures/All`,
   });
+  console.log(session);
 
   res.status(200).json({
     status: "success",
@@ -109,13 +112,5 @@ module.exports.webhook = async (req, res, next) => {
       console.log(`Unhandled event type ${event.type}`);
   }
 
-  // Return a response to acknowledge receipt of the event
   res.json({ received: true });
-  // Handle the event
-  // if (event.type === "checkout.session.completed") {
-  //   await Booking.create({
-  //     user: event.data.object.client_reference_id,
-  //     userProducts: JSON.parse(event.data.object.metadata.userProducts),
-  //   });
-  // }
 };
